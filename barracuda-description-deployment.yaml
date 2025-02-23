@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: barracuda-description
+  labels:
+    app: barracuda-description
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: barracuda-description
+  template:
+    metadata:
+      labels:
+        app: barracuda-description
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: barracuda-description
+          image: ghcr.io/usc-robosub/barracuda-description:main
+          imagePullPolicy: Always
+          command: ["/bin/bash", "/opt/barracuda-description/entrypoint.sh"]
+          tty: true
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: shared-memory
+              mountPath: /dev/shm
+      volumes:
+        - name: shared-memory
+          emptyDir:
+            medium: Memory
