@@ -21,6 +21,13 @@ spec:
           image: ghcr.io/usc-robosub/barracuda-description:main
           imagePullPolicy: Always
           command: ["/bin/bash", "/opt/barracuda-description/entrypoint.sh"]
+          env:
+            - name: ROS_MASTER_URI
+              value: "http://barracuda-description-service:11311"
+            - name: ROS_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
           tty: true
           securityContext:
             privileged: true
