@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: barracuda-imu-service
+  labels:
+    app: barracuda-imu
+spec:
+  selector:
+    app: barracuda-imu
+  ports:
+    - protocol: TCP
+      port: 11311   # Standard ROS master port
+      targetPort: 11311
+  type: ClusterIP
+

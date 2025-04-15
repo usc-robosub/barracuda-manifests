@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: barracuda-imu
+  labels:
+    app: barracuda-imu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: barracuda-imu
+  template:
+    metadata:
+      labels:
+        app: barracuda-imu
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: barracuda-imu
+          image: ghcr.io/usc-robosub/barracuda-imu:main
+          imagePullPolicy: Always
+          command: ["/bin/bash", "/opt/barracuda-imu/entrypoint.sh"]
+          env:
+            - name: ROS_MASTER_URI
+              value: "http://barracuda-description-service:11311"
+            - name: ROS_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+
