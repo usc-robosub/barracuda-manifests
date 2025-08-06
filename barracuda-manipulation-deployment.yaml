@@ -1,25 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: barracuda-localization
+  name: barracuda-manipulation
   labels:
-    app: barracuda-localization
+    app: barracuda-manipulation
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: barracuda-localization
+      app: barracuda-manipulation
   template:
     metadata:
       labels:
-        app: barracuda-localization
+        app: barracuda-manipulation
     spec:
       imagePullSecrets:
         - name: ghcr-secret
       containers:
-        - name: barracuda-localization
-          image: ghcr.io/usc-robosub/barracuda-localization:nightly
-          command: ["/bin/bash", "/opt/barracuda-localization/entrypoint.sh"]
+        - name: barracuda-manipulation
+          image: ghcr.io/usc-robosub/barracuda-manipulation:latest
+          imagePullPolicy: Always
+          command: ["/bin/bash", "/opt/barracuda-manipulator/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
               value: "http://barracuda-description.default.svc.cluster.local:11311"
@@ -29,6 +30,5 @@ spec:
                   fieldPath: status.podIP
           tty: true
           securityContext:
-            runAsUser: 0
+            privileged: true  # adjust if this container needs device access
       restartPolicy: Always
-

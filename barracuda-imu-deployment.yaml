@@ -18,14 +18,17 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-imu
-          image: ghcr.io/usc-robosub/barracuda-imu:main
+          image: ghcr.io/usc-robosub/barracuda-imu:nightly
           imagePullPolicy: Always
           command: ["/bin/bash", "/opt/barracuda-imu/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
-              value: "http://barracuda-description-service:11311"
+              value: "http://barracuda-description.default.svc.cluster.local:11311"
             - name: ROS_IP
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
-
+          tty: true
+          securityContext:
+            privileged: true
+      restartPolicy: Always

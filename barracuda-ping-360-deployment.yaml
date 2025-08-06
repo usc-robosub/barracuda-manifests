@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: barracuda-ping-360
+  labels:
+    app: barracuda-ping-360
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: barracuda-ping-360
+  template:
+    metadata:
+      labels:
+        app: barracuda-ping-360
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: barracuda-ping-360
+          image: ghcr.io/usc-robosub/barracuda-ping-360:latest
+          command: ["/bin/bash", "/opt/barracuda-ping-360/entrypoint.sh"]  # change as needed
+          env:
+            - name: ROS_MASTER_URI
+              value: http://barracuda-description.default.svc.cluster.local:11311
+            - name: ROS_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP

@@ -1,25 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: barracuda-localization
+  name: barracuda-sonar
   labels:
-    app: barracuda-localization
+    app: barracuda-sonar
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: barracuda-localization
+      app: barracuda-sonar
   template:
     metadata:
       labels:
-        app: barracuda-localization
+        app: barracuda-sonar
     spec:
       imagePullSecrets:
         - name: ghcr-secret
       containers:
-        - name: barracuda-localization
-          image: ghcr.io/usc-robosub/barracuda-localization:nightly
-          command: ["/bin/bash", "/opt/barracuda-localization/entrypoint.sh"]
+        - name: barracuda-sonar
+          image: ghcr.io/usc-robosub/barracuda-sonar:latest
+          imagePullPolicy: Always
+          command: ["/bin/bash", "/opt/barracuda-sonar/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
               value: "http://barracuda-description.default.svc.cluster.local:11311"
@@ -29,6 +30,5 @@ spec:
                   fieldPath: status.podIP
           tty: true
           securityContext:
-            runAsUser: 0
+            privileged: false
       restartPolicy: Always
-

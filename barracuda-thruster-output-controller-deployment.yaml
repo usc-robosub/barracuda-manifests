@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: barracuda-localization
+  name: barracuda-thruster-output-controller
   labels:
-    app: barracuda-localization
+    app: barracuda-thruster-output-controller
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: barracuda-localization
+      app: barracuda-thruster-output-controller
   template:
     metadata:
       labels:
-        app: barracuda-localization
+        app: barracuda-thruster-output-controller
     spec:
       imagePullSecrets:
         - name: ghcr-secret
       containers:
-        - name: barracuda-localization
-          image: ghcr.io/usc-robosub/barracuda-localization:nightly
-          command: ["/bin/bash", "/opt/barracuda-localization/entrypoint.sh"]
+        - name: barracuda-thruster-output-controller
+          image: ghcr.io/usc-robosub/barracuda-thruster-output-controller:latest
+          command: ["/bin/bash", "/opt/barracuda-thruster-output-controller/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
               value: "http://barracuda-description.default.svc.cluster.local:11311"
@@ -31,4 +31,3 @@ spec:
           securityContext:
             runAsUser: 0
       restartPolicy: Always
-
