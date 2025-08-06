@@ -14,6 +14,8 @@ spec:
       labels:
         app: barracuda-sonar
     spec:
+      nodeSelector:
+        kubefamily: raspberrypi
       imagePullSecrets:
         - name: ghcr-secret
       containers:

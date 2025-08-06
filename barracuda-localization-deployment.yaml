@@ -14,6 +14,8 @@ spec:
       labels:
         app: barracuda-localization
     spec:
+      nodeSelector:
+        kubefamily: jetson
       imagePullSecrets:
         - name: ghcr-secret
       containers:

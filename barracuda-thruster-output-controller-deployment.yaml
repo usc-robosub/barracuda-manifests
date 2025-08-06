@@ -14,6 +14,8 @@ spec:
       labels:
         app: barracuda-thruster-output-controller
     spec:
+      nodeSelector:
+        kubefamily: raspberrypi
       imagePullSecrets:
         - name: ghcr-secret
       containers:
