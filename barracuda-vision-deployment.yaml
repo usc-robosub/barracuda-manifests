@@ -20,8 +20,8 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-vision
-          image: ghcr.io/usc-robosub/barracuda-vision:latest
-          imagePullPolicy: Always
+          image: barracuda-vision-barracuda-vision:latest
+          imagePullPolicy: Never
           command: ["/bin/bash", "/opt/barracuda-vision/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI

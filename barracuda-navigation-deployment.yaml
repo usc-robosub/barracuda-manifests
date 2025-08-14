@@ -20,7 +20,8 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-navigation
-          image: ghcr.io/usc-robosub/barracuda-navigation:main
+          image: barracuda-navigation-barracuda-navigation:latest
+          imagePullPolicy: Never
           command: ["/bin/bash", "/opt/barracuda-navigation/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI

@@ -20,8 +20,8 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-imu
-          image: ghcr.io/usc-robosub/barracuda-imu:main
-          imagePullPolicy: Always
+          image: barracuda-imu-barracuda-imu:latest
+          imagePullPolicy: Never
           command: ["/bin/bash", "/opt/barracuda-imu/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
