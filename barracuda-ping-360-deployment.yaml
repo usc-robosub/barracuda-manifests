@@ -20,7 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-ping-360
-          image: ghcr.io/usc-robosub/barracuda-ping-360:main
+          image: ghcr.io/usc-robosub/barracuda-ping-360:latest
           command: ["/bin/bash", "/opt/barracuda-ping-360/entrypoint.sh"] # change as needed
           env:
             - name: ROS_MASTER_URI

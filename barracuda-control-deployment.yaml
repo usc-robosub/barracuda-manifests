@@ -20,8 +20,8 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-control
-          image: barracuda-control-barracuda-control:latest
-          imagePullPolicy: Never
+          image: ghcr.io/usc-robosub/barracuda-control:latest
+          command: ["/bin/bash", "/opt/barracuda-control/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
               value: "http://barracuda-description.default.svc.cluster.local:11311"

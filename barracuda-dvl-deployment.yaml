@@ -20,8 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-dvl
-          image: barracuda-dvl-barracuda-dvl:latest
-          imagePullPolicy: Never
+          image: ghcr.io/usc-robosub/barracuda-dvl:latest
           command: ["/bin/bash", "/opt/barracuda-dvl/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI

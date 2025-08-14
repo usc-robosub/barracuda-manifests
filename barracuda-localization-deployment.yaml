@@ -20,8 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-localization
-          image: barracuda-localization-barracuda-localization:latest
-          imagePullPolicy: Never
+          image: ghcr.io/usc-robosub/barracuda-localization:latest
           command: ["/bin/bash", "/opt/barracuda-localization/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI

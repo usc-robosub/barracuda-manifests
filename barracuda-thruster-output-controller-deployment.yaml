@@ -20,7 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-thruster-output-controller
-          image: ghcr.io/usc-robosub/barracuda-thruster-output-controller:main
+          image: ghcr.io/usc-robosub/barracuda-thruster-output-controller:latest
           command:
             [
               "/bin/bash",
