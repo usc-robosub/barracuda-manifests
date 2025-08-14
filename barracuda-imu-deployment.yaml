@@ -20,7 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-imu
-          image: ghcr.io/usc-robosub/barracuda-imu:nightly
+          image: ghcr.io/usc-robosub/barracuda-imu:main
           imagePullPolicy: Always
           command: ["/bin/bash", "/opt/barracuda-imu/entrypoint.sh"]
           env:

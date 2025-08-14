@@ -20,7 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-camera
-          image: ghcr.io/usc-robosub/barracuda-camera:nightly
+          image: ghcr.io/usc-robosub/barracuda-camera:main
           command: ["/bin/bash", "/opt/barracuda-camera/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI

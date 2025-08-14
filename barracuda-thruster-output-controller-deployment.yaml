@@ -20,8 +20,12 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-thruster-output-controller
-          image: ghcr.io/usc-robosub/barracuda-thruster-output-controller:latest
-          command: ["/bin/bash", "/opt/barracuda-thruster-output-controller/entrypoint.sh"]
+          image: ghcr.io/usc-robosub/barracuda-thruster-output-controller:main
+          command:
+            [
+              "/bin/bash",
+              "/opt/barracuda-thruster-output-controller/entrypoint.sh",
+            ]
           env:
             - name: ROS_MASTER_URI
               value: "http://barracuda-description.default.svc.cluster.local:11311"

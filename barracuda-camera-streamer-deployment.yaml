@@ -20,7 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-camera-streamer
-          image: ghcr.io/usc-robosub/barracuda-camera-streamer:latest
+          image: ghcr.io/usc-robosub/barracuda-camera-streamer:main
           command: ["/bin/bash", "/opt/barracuda-camera-streamer/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI

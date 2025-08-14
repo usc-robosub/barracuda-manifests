@@ -15,13 +15,13 @@ spec:
         app: barracuda-ping-360
     spec:
       nodeSelector:
-        kubefamily: jetson
+        kubefamily: raspberrypi
       imagePullSecrets:
         - name: ghcr-secret
       containers:
         - name: barracuda-ping-360
-          image: ghcr.io/usc-robosub/barracuda-ping-360:latest
-          command: ["/bin/bash", "/opt/barracuda-ping-360/entrypoint.sh"]  # change as needed
+          image: ghcr.io/usc-robosub/barracuda-ping-360:main
+          command: ["/bin/bash", "/opt/barracuda-ping-360/entrypoint.sh"] # change as needed
           env:
             - name: ROS_MASTER_URI
               value: http://barracuda-description.default.svc.cluster.local:11311

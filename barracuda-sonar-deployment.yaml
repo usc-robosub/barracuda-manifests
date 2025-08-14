@@ -20,7 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-sonar
-          image: ghcr.io/usc-robosub/barracuda-sonar:latest
+          image: ghcr.io/usc-robosub/barracuda-sonar:main
           imagePullPolicy: Always
           command: ["/bin/bash", "/opt/barracuda-sonar/entrypoint.sh"]
           env:

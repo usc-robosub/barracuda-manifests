@@ -25,7 +25,7 @@ spec:
           command: ["/bin/bash", "/opt/barracuda-description/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
-              value: "http://localhost:11311"
+              value: "http://192.168.2.1:11311"
             - name: ROS_IP
               valueFrom:
                 fieldRef:
@@ -40,4 +40,3 @@ spec:
         - name: shared-memory
           emptyDir:
             medium: Memory
-

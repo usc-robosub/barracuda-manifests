@@ -20,7 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-mapping
-          image: ghcr.io/usc-robosub/barracuda-mapping:latest
+          image: ghcr.io/usc-robosub/barracuda-mapping:main
           command: ["/bin/bash", "/opt/barracuda-mapping/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
