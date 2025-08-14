@@ -20,7 +20,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: barracuda-description
-          image: ghcr.io/usc-robosub/barracuda-description:main
+          image: barracuda-description-barracuda-description:latest
           imagePullPolicy: Always
           command: ["/bin/bash", "/opt/barracuda-description/entrypoint.sh"]
           env:
