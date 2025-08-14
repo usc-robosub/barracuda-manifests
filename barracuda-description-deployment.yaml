@@ -21,7 +21,7 @@ spec:
       containers:
         - name: barracuda-description
           image: barracuda-description-barracuda-description:latest
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           command: ["/bin/bash", "/opt/barracuda-description/entrypoint.sh"]
           env:
             - name: ROS_MASTER_URI
